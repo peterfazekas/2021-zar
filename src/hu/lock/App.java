@@ -23,6 +23,14 @@ public class App {
     private void run() {
         System.out.print("2. feladat: Adja meg mi nyitja a zárat: ");
         String pattern = console.read();
+        System.out.println("3. feladat:");
+        System.out.println("A nyitó kódszámok sorai: "
+                + keyService.getEqualKeyIds(pattern));
+        System.out.println("4. feladat:");
+        System.out.println("Az első ismétlődést tartalmazó próbálkozás sorszáma: "
+                + keyService.getSameDigitKeyId());
+        System.out.println("5. feladat:");
+        System.out.println(keyService.getGeneratedKey(pattern));
     }
 
 }
