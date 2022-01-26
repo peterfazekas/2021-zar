@@ -1,7 +1,8 @@
 package hu.lock.model.domain;
 
+import hu.lock.model.service.LockUtil;
+
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -32,5 +33,9 @@ public class Key {
         return value.chars()
                 .mapToObj(Integer::toString)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+    }
+
+    public String openResult(String pattern) {
+        return String.format("%s %s", value, LockUtil.openResult(value, pattern));
     }
 }

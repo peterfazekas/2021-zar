@@ -46,4 +46,13 @@ public class KeyService {
         return String.format("Egy %d hosszú kódszám: %s",
                 length, RandomKeyUtil.generateKey(length));
     }
+
+    /**
+     * 7. feladat
+     */
+    public List<String> getOpenResults(String pattern) {
+        return keys.stream()
+                .map(key -> key.openResult(pattern))
+                .collect(Collectors.toList());
+    }
 }

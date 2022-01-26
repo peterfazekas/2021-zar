@@ -6,14 +6,16 @@ import hu.lock.model.service.*;
 import java.util.Scanner;
 
 public class App {
-    
+
     private final KeyService keyService;
     private final Console console;
+    private final DataWriter dataWriter;
 
     private App() {
         console = new Console(new Scanner(System.in));
         DataApi dataApi = new DataApi(new FileReader(), new DataParser());
         keyService = new KeyService(dataApi.getData("ajto.txt"));
+        dataWriter = new DataWriter("siker.txt");
     }
 
     public static void main(String[] args) {
@@ -31,6 +33,7 @@ public class App {
                 + keyService.getSameDigitKeyId());
         System.out.println("5. feladat:");
         System.out.println(keyService.getGeneratedKey(pattern));
+        dataWriter.writeAll(keyService.getOpenResults(pattern));
     }
 
 }
